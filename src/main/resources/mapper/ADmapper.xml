@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--坑点2：命名空间指向对应dao类名-->
+<mapper namespace="com.jysd.dphweb.dao.ADDao">
+<select id="selectAd" parameterType="String" resultType="com.jysd.dphweb.bean.tablebean.AD">
+      select * from  nideshop_ad where  ad_position_id=#{posid};
+
+</select>
+
+
+</mapper>
