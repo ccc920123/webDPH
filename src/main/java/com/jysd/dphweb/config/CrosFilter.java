@@ -1,5 +1,7 @@
 package com.jysd.dphweb.config;
 
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.*;
@@ -16,6 +18,8 @@ import java.io.IOException;
  * 修改人：
  * 修改时间：
  */
+
+@Component
 public class CrosFilter implements Filter {
         @Override
         public void init(FilterConfig filterConfig) throws ServletException {
