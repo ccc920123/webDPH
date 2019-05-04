@@ -4,7 +4,6 @@ import com.jysd.dphweb.bean.tablebean.AD;
 import com.jysd.dphweb.bean.tablebean.Brand;
 import com.jysd.dphweb.bean.tablebean.Channel;
 import com.jysd.dphweb.bean.tablebean.Goods;
-import com.sun.org.apache.xpath.internal.objects.XString;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -21,7 +20,7 @@ import java.util.List;
  */
 @Repository
 public interface IndexDao {
-    List<AD> selectAd(@Param("ids") String id) throws Exception;
+    List<AD> selectAd(@Param("id") String id) throws Exception;
 
     List<Channel> selectChannel() throws Exception;
 

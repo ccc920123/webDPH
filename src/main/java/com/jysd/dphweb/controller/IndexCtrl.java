@@ -29,7 +29,7 @@ public class IndexCtrl {
 
     @RequestMapping(value = "/banner", method = RequestMethod.POST)
     @ApiOperation(value="根据id得到banner轮播数据", notes="测试id等于1")
-    @ApiImplicitParam(paramType="query", name = "getBanner", value = "轮播id", required = true, dataType = "String")
+    @ApiImplicitParam(paramType="query", name = "id", value = "轮播id", required = true, dataType = "String")
     public Response getBanner(String id) {
         try {
             return service.getBanner(id);
@@ -40,6 +40,7 @@ public class IndexCtrl {
     }
 
     @RequestMapping(value = "channel", method = RequestMethod.GET)
+    @ApiOperation(value="轮播下的导航条", notes="导航条id等于1")
     public Response getChannel() {
         try {
 

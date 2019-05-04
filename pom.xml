@@ -12,7 +12,7 @@
     <artifactId>dphweb</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>dphweb</name>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -79,11 +79,11 @@
             <artifactId>plexus-utils</artifactId>
             <version>3.2.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-war-plugin</artifactId>
-            <version>3.2.2</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-war-plugin</artifactId>-->
+            <!--<version>3.2.2</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
