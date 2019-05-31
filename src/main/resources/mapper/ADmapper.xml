@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--坑点2：命名空间指向对应dao类名-->
 <mapper namespace="com.jysd.dphweb.dao.IndexDao">
-    <select id="selectAd" parameterType="String" resultType="com.jysd.dphweb.bean.tablebean.AD">
+    <select id="selectAd" parameterType="string" resultType="com.jysd.dphweb.bean.tablebean.AD">
         select * from nideshop_ad where ad_position_id=#{id};
     </select>
     <select id="selectChannel" resultType="com.jysd.dphweb.bean.tablebean.Channel">
@@ -12,13 +12,32 @@
 
     </select>
 
-    <select id="selectNewGoods" parameterType="String" resultType="com.jysd.dphweb.bean.tablebean.Goods">
+    <select id="selectNewGoods" parameterType="string" resultType="com.jysd.dphweb.bean.tablebean.Goods">
         SELECT id,`name`,list_pic_url,retail_price FROM nideshop_goods WHERE is_new=#{isnew} LIMIT 4;
     </select>
-    <select id="selectHotGoods" parameterType="String" resultType="com.jysd.dphweb.bean.tablebean.Goods">
+    <select id="selectHotGoods" parameterType="string" resultType="com.jysd.dphweb.bean.tablebean.Goods">
         SELECT id,`name`,list_pic_url,retail_price,goods_brief FROM nideshop_goods WHERE is_hot=#{ishot} LIMIT 3;
     </select>
     <select id="selectBrand" parameterType="int" resultType="com.jysd.dphweb.bean.tablebean.Brand">
-        SELECT * FROM nideshop_brand WHERE is_new=#{isnew} ORDER BY new_sort_order ASC LIMIT 4;
+        SELECT * FROM nideshop_brand WHERE is_new=1 ORDER BY new_sort_order ASC LIMIT 4;
     </select>
+    <select id="selectTopic" resultType="com.jysd.dphweb.bean.tablebean.Topic">
+        SELECT  * FROM  nideshop_topic LIMIT 3;
+    </select>
+    <select id="selectCategory" resultType="com.jysd.dphweb.bean.tablebean.Category">
+
+        SELECT  * FROM  nideshop_category WHERE parent_id=0 ;
+    </select>
+    <select id="selectGoodsList" resultType="com.jysd.dphweb.bean.tablebean.GoodsListBean">
+
+
+            SELECT  nideshop_goods.id,
+            nideshop_goods.name,
+            nideshop_goods.list_pic_url,
+            nideshop_goods.retail_price  from nideshop_goods where id IN (
+            select id from nideshop_category
+            where  parent_id = #{id} )LIMIT 7;
+
+    </select>
+
 </mapper>

@@ -19,4 +19,35 @@ public class Channel {
 
     private String sort_order;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getIcon_url() {
+        return icon_url;
+    }
+
+    public void setIcon_url(String icon_url) {
+        this.icon_url = icon_url;
+    }
+
+    public String getSort_order() {
+        return sort_order;
+    }
+
+    public void setSort_order(String sort_order) {
+        this.sort_order = sort_order;
+    }
 }

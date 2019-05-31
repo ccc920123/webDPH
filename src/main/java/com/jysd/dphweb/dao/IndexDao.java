@@ -1,9 +1,6 @@
 package com.jysd.dphweb.dao;
 
-import com.jysd.dphweb.bean.tablebean.AD;
-import com.jysd.dphweb.bean.tablebean.Brand;
-import com.jysd.dphweb.bean.tablebean.Channel;
-import com.jysd.dphweb.bean.tablebean.Goods;
+import com.jysd.dphweb.bean.tablebean.*;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -28,7 +25,19 @@ public interface IndexDao {
 
     List<Goods> selectHotGoods(@Param("ishot") String ishot) throws Exception;
 
-    List<Brand> selectBrand(@Param("isnew") int isnew) throws Exception;
+    List<Brand> selectBrand() throws Exception;
+
+    List<Topic> selectTopic() throws Exception;
+
+    List<Category>selectCategory() throws Exception;
+
+
+    List<GoodsListBean>selectGoodsList(@Param("id") String id)throws Exception;
+
+    ///
+
+
+
 
 
 }

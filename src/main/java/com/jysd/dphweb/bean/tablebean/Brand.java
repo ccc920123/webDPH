@@ -1,32 +1,37 @@
 package com.jysd.dphweb.bean.tablebean;
 
-/**
- * 作者:陈渝金
- * 部门：技术部 PDA
- * 创建时间: 2019/4/10 21:53
- * 描述：品牌 包含这个品牌的很多信息
- * 修改人：
- * 修改时间：
- */
-public class Brand {
-    private int id;
-    private String name;
-    private String list_pic_url;
-    private String simple_desc;
-    private String pic_url;
-    private int sort_order;
-    private int is_show;
-    private float floor_price;
-    private String app_list_pic_url;
-    private int is_new;
-    private String new_pic_url;
-    private int new_sort_order;
+import java.math.BigDecimal;
 
-    public int getId() {
+public class Brand {
+    private Integer id;
+
+    private String name;
+
+    private String listPicUrl;
+
+    private String simpleDesc;
+
+    private String picUrl;
+
+    private int sortOrder;
+
+    private Boolean isShow;
+
+    private BigDecimal floorPrice;
+
+    private String appListPicUrl;
+
+    private Boolean isNew;
+
+    private String newPicUrl;
+
+    private int newSortOrder;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -35,86 +40,86 @@ public class Brand {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 
-    public String getList_pic_url() {
-        return list_pic_url;
+    public String getListPicUrl() {
+        return listPicUrl;
     }
 
-    public void setList_pic_url(String list_pic_url) {
-        this.list_pic_url = list_pic_url;
+    public void setListPicUrl(String listPicUrl) {
+        this.listPicUrl = listPicUrl == null ? null : listPicUrl.trim();
     }
 
-    public String getSimple_desc() {
-        return simple_desc;
+    public String getSimpleDesc() {
+        return simpleDesc;
     }
 
-    public void setSimple_desc(String simple_desc) {
-        this.simple_desc = simple_desc;
+    public void setSimpleDesc(String simpleDesc) {
+        this.simpleDesc = simpleDesc == null ? null : simpleDesc.trim();
     }
 
-    public String getPic_url() {
-        return pic_url;
+    public String getPicUrl() {
+        return picUrl;
     }
 
-    public void setPic_url(String pic_url) {
-        this.pic_url = pic_url;
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl == null ? null : picUrl.trim();
     }
 
-    public int getSort_order() {
-        return sort_order;
+    public int getSortOrder() {
+        return sortOrder;
     }
 
-    public void setSort_order(int sort_order) {
-        this.sort_order = sort_order;
+    public void setSortOrder(int sortOrder) {
+        this.sortOrder = sortOrder;
     }
 
-    public int getIs_show() {
-        return is_show;
+    public Boolean getIsShow() {
+        return isShow;
     }
 
-    public void setIs_show(int is_show) {
-        this.is_show = is_show;
+    public void setIsShow(Boolean isShow) {
+        this.isShow = isShow;
     }
 
-    public float getFloor_price() {
-        return floor_price;
+    public BigDecimal getFloorPrice() {
+        return floorPrice;
     }
 
-    public void setFloor_price(float floor_price) {
-        this.floor_price = floor_price;
+    public void setFloorPrice(BigDecimal floorPrice) {
+        this.floorPrice = floorPrice;
     }
 
-    public String getApp_list_pic_url() {
-        return app_list_pic_url;
+    public String getAppListPicUrl() {
+        return appListPicUrl;
     }
 
-    public void setApp_list_pic_url(String app_list_pic_url) {
-        this.app_list_pic_url = app_list_pic_url;
+    public void setAppListPicUrl(String appListPicUrl) {
+        this.appListPicUrl = appListPicUrl == null ? null : appListPicUrl.trim();
     }
 
-    public int getIs_new() {
-        return is_new;
+    public Boolean getIsNew() {
+        return isNew;
     }
 
-    public void setIs_new(int is_new) {
-        this.is_new = is_new;
+    public void setIsNew(Boolean isNew) {
+        this.isNew = isNew;
     }
 
-    public String getNew_pic_url() {
-        return new_pic_url;
+    public String getNewPicUrl() {
+        return newPicUrl;
     }
 
-    public void setNew_pic_url(String new_pic_url) {
-        this.new_pic_url = new_pic_url;
+    public void setNewPicUrl(String newPicUrl) {
+        this.newPicUrl = newPicUrl == null ? null : newPicUrl.trim();
     }
 
-    public int getNew_sort_order() {
-        return new_sort_order;
+    public int getNewSortOrder() {
+        return newSortOrder;
     }
 
-    public void setNew_sort_order(int new_sort_order) {
-        this.new_sort_order = new_sort_order;
+    public void setNewSortOrder(int newSortOrder) {
+        this.newSortOrder = newSortOrder;
     }
 }

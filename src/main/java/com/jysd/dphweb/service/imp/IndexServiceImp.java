@@ -1,6 +1,7 @@
 package com.jysd.dphweb.service.imp;
 
 import com.jysd.dphweb.bean.Response;
+import com.sun.org.apache.regexp.internal.RE;
 
 /**
  * 作者:陈渝金
@@ -23,4 +24,12 @@ public interface IndexServiceImp {
 
     //得到前3的热门商品
     Response getHotGoods(String is_hot) throws Exception;
+
+    //
+    Response getBrand() throws Exception;
+    Response getTopic() throws Exception;
+
+    Response getCategory() throws  Exception;
+
+    Response getIndextDate() throws  Exception;
 }
