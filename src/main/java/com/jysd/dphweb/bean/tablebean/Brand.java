@@ -13,7 +13,7 @@ public class Brand {
 
     private String picUrl;
 
-    private int sortOrder;
+    private Byte sortOrder;
 
     private Boolean isShow;
 
@@ -25,7 +25,7 @@ public class Brand {
 
     private String newPicUrl;
 
-    private int newSortOrder;
+    private Byte newSortOrder;
 
     public Integer getId() {
         return id;
@@ -67,11 +67,11 @@ public class Brand {
         this.picUrl = picUrl == null ? null : picUrl.trim();
     }
 
-    public int getSortOrder() {
+    public Byte getSortOrder() {
         return sortOrder;
     }
 
-    public void setSortOrder(int sortOrder) {
+    public void setSortOrder(Byte sortOrder) {
         this.sortOrder = sortOrder;
     }
 
@@ -115,11 +115,11 @@ public class Brand {
         this.newPicUrl = newPicUrl == null ? null : newPicUrl.trim();
     }
 
-    public int getNewSortOrder() {
+    public Byte getNewSortOrder() {
         return newSortOrder;
     }
 
-    public void setNewSortOrder(int newSortOrder) {
+    public void setNewSortOrder(Byte newSortOrder) {
         this.newSortOrder = newSortOrder;
     }
 }

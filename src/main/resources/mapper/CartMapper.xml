@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jysd.dphweb.dao.CartDao">
+    <resultMap id="BaseResultMap" type="com.jysd.dphweb.bean.tablebean.Cart">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="session_id" property="sessionId" jdbcType="CHAR"/>
+        <result column="goods_id" property="goodsId" jdbcType="INTEGER"/>
+        <result column="goods_sn" property="goodsSn" jdbcType="VARCHAR"/>
+        <result column="product_id" property="productId" jdbcType="INTEGER"/>
+        <result column="goods_name" property="goodsName" jdbcType="VARCHAR"/>
+        <result column="market_price" property="marketPrice" jdbcType="DECIMAL"/>
+        <result column="retail_price" property="retailPrice" jdbcType="DECIMAL"/>
+        <result column="number" property="number" jdbcType="SMALLINT"/>
+        <result column="goods_specifition_ids" property="goodsSpecifitionIds" jdbcType="VARCHAR"/>
+        <result column="checked" property="checked" jdbcType="BIT"/>
+        <result column="list_pic_url" property="listPicUrl" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.jysd.dphweb.bean.tablebean.Cart" extends="BaseResultMap">
+        <result column="goods_specifition_name_value" property="goodsSpecifitionNameValue" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, user_id, session_id, goods_id, goods_sn, product_id, goods_name, market_price, 
+    retail_price, number, goods_specifition_ids, checked, list_pic_url
+  </sql>
+    <sql id="Blob_Column_List">
+    goods_specifition_name_value
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from nideshop_cart
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="getAllCart" resultType="com.jysd.dphweb.bean.tablebean.Cart">
+
+SELECT  C.user_id,C.session_id,C.goods_id,C.goods_sn,C.product_id,C.goods_name,C.market_price,
+  C.retail_price,C.number,C.goods_specifition_name_value,C.goods_specifition_ids,C.checked,G.list_pic_url
+FROM  nideshop_cart C
+  LEFT JOIN
+nideshop_goods G ON (c.goods_id=G.id)
+WHERE C.user_id=#{userid} AND C.session_id=#{sessionid} AND G.id=C.goods_id
+
+    </select>
+    <select id="getIsShop" resultType="com.jysd.dphweb.bean.tablebean.AllGoods">
+        SELECT * FROM nideshop_goods WHERE id=#{id}
+
+
+    </select>
+    <select id="getIsProduct" resultType="com.jysd.dphweb.bean.tablebean.Product">
+
+        SELECT  * FROM  nideshop_product WHERE goods_id=#{goodid} AND id=#{productid}
+
+
+    </select>
+    <select id="isYesCart" resultType="com.jysd.dphweb.bean.tablebean.Cart">
+
+        SELECT  * FROM  nideshop_cart WHERE  goods_id=#{goodid} AND product_id=#{productid}
+
+
+
+
+    </select>
+    <select id="isCart" resultType="com.jysd.dphweb.bean.tablebean.Cart">
+         SELECT  * FROM  nideshop_cart WHERE  id=#{id}
+    </select>
+
+
+    <select id="getGoodsSpecification" resultType="java.lang.String">
+
+
+SELECT gs.value FROM  nideshop_goods_specification gs WHERE  goods_id =#{goodsid}
+
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from nideshop_cart
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.jysd.dphweb.bean.tablebean.Cart">
+    insert into nideshop_cart (id, user_id, session_id, 
+      goods_id, goods_sn, product_id, 
+      goods_name, market_price, retail_price, 
+      number, goods_specifition_ids, checked, 
+      list_pic_url, goods_specifition_name_value
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{sessionId,jdbcType=CHAR}, 
+      #{goodsId,jdbcType=INTEGER}, #{goodsSn,jdbcType=VARCHAR}, #{productId,jdbcType=INTEGER}, 
+      #{goodsName,jdbcType=VARCHAR}, #{marketPrice,jdbcType=DECIMAL}, #{retailPrice,jdbcType=DECIMAL}, 
+      #{number,jdbcType=SMALLINT}, #{goodsSpecifitionIds,jdbcType=VARCHAR}, #{checked,jdbcType=BIT}, 
+      #{listPicUrl,jdbcType=VARCHAR}, #{goodsSpecifitionNameValue,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.jysd.dphweb.bean.tablebean.Cart">
+        insert into nideshop_cart
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="sessionId != null">
+                session_id,
+            </if>
+            <if test="goodsId != null">
+                goods_id,
+            </if>
+            <if test="goodsSn != null">
+                goods_sn,
+            </if>
+            <if test="productId != null">
+                product_id,
+            </if>
+            <if test="goodsName != null">
+                goods_name,
+            </if>
+            <if test="marketPrice != null">
+                market_price,
+            </if>
+            <if test="retailPrice != null">
+                retail_price,
+            </if>
+            <if test="number != null">
+                number,
+            </if>
+            <if test="goodsSpecifitionIds != null">
+                goods_specifition_ids,
+            </if>
+            <if test="checked != null">
+                checked,
+            </if>
+            <if test="listPicUrl != null">
+                list_pic_url,
+            </if>
+            <if test="goodsSpecifitionNameValue != null">
+                goods_specifition_name_value,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="sessionId != null">
+                #{sessionId,jdbcType=CHAR},
+            </if>
+            <if test="goodsId != null">
+                #{goodsId,jdbcType=INTEGER},
+            </if>
+            <if test="goodsSn != null">
+                #{goodsSn,jdbcType=VARCHAR},
+            </if>
+            <if test="productId != null">
+                #{productId,jdbcType=INTEGER},
+            </if>
+            <if test="goodsName != null">
+                #{goodsName,jdbcType=VARCHAR},
+            </if>
+            <if test="marketPrice != null">
+                #{marketPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="retailPrice != null">
+                #{retailPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="number != null">
+                #{number,jdbcType=SMALLINT},
+            </if>
+            <if test="goodsSpecifitionIds != null">
+                #{goodsSpecifitionIds,jdbcType=VARCHAR},
+            </if>
+            <if test="checked != null">
+                #{checked,jdbcType=BIT},
+            </if>
+            <if test="listPicUrl != null">
+                #{listPicUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsSpecifitionNameValue != null">
+                #{goodsSpecifitionNameValue,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateNumber">
+         UPDATE  nideshop_cart SET number =number+1
+         WHERE  goods_id=#{goodid}
+         AND  product_id=#{productId}
+         AND id =#{cartInfoid}
+
+
+    </update>
+    <update id="updataCartNumber">
+         UPDATE  nideshop_cart SET  number=#{number}
+         WHERE id=#{id}
+
+    </update>
+
+    <update id="updataCartData" parameterType="com.jysd.dphweb.bean.tablebean.Cart">
+        update nideshop_cart
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="sessionId != null">
+                session_id = #{sessionId,jdbcType=CHAR},
+            </if>
+            <if test="goodsId != null">
+                goods_id = #{goodsId,jdbcType=INTEGER},
+            </if>
+            <if test="goodsSn != null">
+                goods_sn = #{goodsSn,jdbcType=VARCHAR},
+            </if>
+            <if test="productId != null">
+                product_id = #{productId,jdbcType=INTEGER},
+            </if>
+            <if test="goodsName != null">
+                goods_name = #{goodsName,jdbcType=VARCHAR},
+            </if>
+            <if test="marketPrice != null">
+                market_price = #{marketPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="retailPrice != null">
+                retail_price = #{retailPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="number != null">
+                number = #{number,jdbcType=SMALLINT},
+            </if>
+            <if test="goodsSpecifitionIds != null">
+                goods_specifition_ids = #{goodsSpecifitionIds,jdbcType=VARCHAR},
+            </if>
+            <if test="checked != null">
+                checked = #{checked,jdbcType=BIT},
+            </if>
+            <if test="listPicUrl != null">
+                list_pic_url = #{listPicUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsSpecifitionNameValue != null">
+                goods_specifition_name_value = #{goodsSpecifitionNameValue,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+</mapper>
