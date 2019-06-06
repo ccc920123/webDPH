@@ -74,12 +74,51 @@ WHERE C.user_id=#{userid} AND C.session_id=#{sessionid} AND G.id=C.goods_id
 SELECT gs.value FROM  nideshop_goods_specification gs WHERE  goods_id =#{goodsid}
 
     </select>
+    <select id="goodscountCartData" resultType="java.lang.Integer">
+
+
+      select max(id) as total from nideshop_cart WHERE user_id=#{userid} AND sessionid=#{sessionid};
+
+    </select>
+    <select id="checkedAddress" resultType="com.jysd.dphweb.bean.tablebean.Address">
+
+        SELECT * FROM nideshop_address
+        WHERE
+        <trim>
+            <if test="addressId == 0">
+                user_id=#{loginUserId} AND is_default=1
+            </if>
+            <if test="addressId != 0">
+                user_id=#{loginUserId} AND id=#{addressId}
+            </if>
+        </trim>
+        limit 1
+
+
+    </select>
+    <select id="selectprovincecitydistrict" resultType="java.lang.String">
+
+        SELECT  name FROM nideshop_region WHERE parent_id= #{parentid};
+
+
+    </select>
+    <select id="selectUserCoup" resultType="com.jysd.dphweb.bean.tablebean.UserCoupon">
+
+        SELECT * FROM  nideshop_user_coupon WHERE user_id=#{userid}
+
+    </select>
 
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from nideshop_cart
     where id = #{id,jdbcType=INTEGER}
   </delete>
+    <delete id="deleteInCartdata">
+        DELETE  FROM nideshop_cart
+        WHERE  product_id in(#{productId})
+
+
+    </delete>
     <insert id="insert" parameterType="com.jysd.dphweb.bean.tablebean.Cart">
     insert into nideshop_cart (id, user_id, session_id, 
       goods_id, goods_sn, product_id, 
@@ -245,5 +284,11 @@ SELECT gs.value FROM  nideshop_goods_specification gs WHERE  goods_id =#{goodsid
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
+    <update id="checkedCartData">
+
+       UPDATE   nideshop_cart SET checked=#{isChecked} WHERE product_id  IN (#{productId})
+
+    </update>
+
 
 </mapper>

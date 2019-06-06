@@ -209,8 +209,116 @@ public class CartService implements CartServiceImp {
      * @throws Exception
      */
     @Override
-    public Response deleteCartData(String productId) throws Exception {
-        return null;
+    public Response deleteCartData(String loginUserId, String sessionId, String productId) throws Exception {
+        int deleteRow = dao.deleteInCartdata(productId);
+        if (deleteRow > 0) {
+            return new Response().success(dao.getAllCart(loginUserId, sessionId));
+        }
+
+        return new Response().failure("删除出错");
+    }
+
+    /**
+     * // 是否选择商品，如果已经选择，则取消选择，批量操作
+     *
+     * @param loginUserId
+     * @param sessionId
+     * @param productId
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public Response checkedCartData(String loginUserId, String sessionId, String productId, boolean isCheck) throws Exception {
+
+        if (productId == null || "".equals(productId)) {
+            return new Response().failure("删除出错");
+        }
+        int checkRow = dao.checkedCartData(productId, isCheck);
+
+        if (checkRow > 0) {
+            return new Response().success(dao.getAllCart(loginUserId, sessionId));
+        }
+
+
+        return new Response().failure("删除出错");
+    }
+
+    /**
+     * 得到商品总条数
+     *
+     * @param loginUserId
+     * @param sessionId
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public Response goodscountCartData(String loginUserId, String sessionId) throws Exception {
+        int count = dao.goodscountCartData(loginUserId, sessionId);
+
+
+        return new Response().success(count);
+    }
+
+    /**
+     * 订单提交前的检验和填写相关订单信息
+     *
+     * @param loginUserId
+     * @param sessionId
+     * @param addressId
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public Response checkoutAction(String loginUserId, String sessionId, int addressId) throws Exception {
+        AddressCart addressCart = new AddressCart();
+        Address address = dao.checkedAddress(loginUserId, addressId);
+
+        if (address != null) {
+            String provinceName = dao.selectprovincecitydistrict(address.getProvinceId());
+            String cityName = dao.selectprovincecitydistrict(address.getCityId());
+            String districtName = dao.selectprovincecitydistrict(address.getDistrictId());
+            String allAddress = provinceName + cityName + districtName;
+            addressCart.setCheckedAddress(allAddress);
+        }
+        // 根据收货地址计算运费
+        double freightPrice = 0.00;
+        addressCart.setFreightPrice(freightPrice);
+
+        Response response = getCartAllData(loginUserId, sessionId);
+        List<Cart> checkedGoodsList = null;
+        CartRespBean respBean = (CartRespBean) response.getData();
+        if (response.isSuccess()) {
+
+            checkedGoodsList = respBean.getCartList();
+
+
+            for (Cart cart : checkedGoodsList) {
+                cart.setChecked(true);
+            }
+
+            addressCart.setCheckedGoodsList(checkedGoodsList);
+
+            // 获取可用的优惠券信息，功能还示实现
+            List<UserCoupon> userCouponList = dao.selectUserCoup(loginUserId);
+
+            addressCart.setCouponList(userCouponList);
+
+            double couponPrice = 0.00; // 使用优惠券减免的金额
+            addressCart.setCouponPrice(couponPrice);
+            CartRespTotalBean cartRespTotalBean = respBean.getCartTotal();
+
+            // 计算订单的费用
+            double goodsTotalPrice = cartRespTotalBean.getCheckedGoodsAmount(); // 商品总价
+            double orderTotalPrice = cartRespTotalBean.getCheckedGoodsAmount() + freightPrice - couponPrice; // 订单的总价
+            double actualPrice = orderTotalPrice - 0.00; // 减去其它支付的金额后，要实际支付的金额
+
+            addressCart.setGoodsTotalPrice(goodsTotalPrice);
+            addressCart.setOrderTotalPrice(orderTotalPrice);
+            addressCart.setActualPrice(actualPrice);
+            return new Response().failure(addressCart);
+
+        }
+        return new Response().failure();
     }
 
 
