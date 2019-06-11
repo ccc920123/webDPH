@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--坑点2：命名空间指向对应dao类名-->
+<mapper namespace="com.jysd.dphweb.dao.GoodsDao">
+
+
+    <select id="selectGoods" resultType="com.jysd.dphweb.bean.tablebean.Goods">
+
+        SELECT * FROM nideshop_goods;
+    </select>
+    <select id="selectInfo" resultType="com.jysd.dphweb.bean.tablebean.GoodsBean">
+        SELECT * FROM nideshop_goods WHERE id=#{id};
+
+    </select>
+    <select id="selectGallry" resultType="com.jysd.dphweb.bean.tablebean.GoodsGallery">
+SELECT * FROM nideshop_goods_gallery WHERE goods_id=#{goodid} LIMIT 4;
+
+    </select>
+    <select id="selectAttribute" resultType="com.jysd.dphweb.bean.tablebean.AttributeJoinBean">
+
+SELECT  g.value,a.name FROM nideshop_goods_attribute g
+ LEFT JOIN nideshop_attribute a ON (g.attribute_id= a.id)
+  WHERE g.goods_id=#{goodid}
+ORDER BY g.attribute_id ASC ;
+
+    </select>
+    <select id="selectGoodsIssues" resultType="com.jysd.dphweb.bean.tablebean.GoodsIssue">
+SELECT * FROM nideshop_goods_issue;
+    </select>
+</mapper>

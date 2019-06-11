@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jysd.dphweb.dao.FootPrintDao">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+   DELETE  FROM nideshop_footprint WHERE user_id=#{id} AND goods_id=
+                                                    (SELECT  goods_id FROM  nideshop_footprint WHERE user_id=#{id} AND  id=#{footid});
+  </delete>
+    <select id="selectFoootPrintData" resultType="com.jysd.dphweb.bean.tablebean.FootPrintJoinBean">
+
+
+SELECT  f.*,g.name,g.list_pic_url,g.goods_brief,g.retail_price FROM  nideshop_footprint f
+  LEFT JOIN  nideshop_goods g ON (f.goods_id=g.id)
+WHERE f.user_id=#{loginUser} GROUP BY f.goods_id ORDER BY f.id DESC;
+
+
+    </select>
+
+
+</mapper>

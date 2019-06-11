@@ -1,7 +1,7 @@
 package com.jysd.dphweb.bean.tablebean;
 
 public class Category {
-    private String id;
+    private int id;
 
     private String name;
 
@@ -9,13 +9,13 @@ public class Category {
 
     private String frontDesc;
 
-    private Integer parentId;
+    private int parentId;
 
-    private Boolean sortOrder;
+    private int sortOrder;
 
-    private Boolean showIndex;
+    private int showIndex;
 
-    private Boolean isShow;
+    private int isShow;
 
     private String bannerUrl;
 
@@ -27,15 +27,15 @@ public class Category {
 
     private String level;
 
-    private Integer type;
+    private int type;
 
     private String frontName;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -63,35 +63,35 @@ public class Category {
         this.frontDesc = frontDesc == null ? null : frontDesc.trim();
     }
 
-    public Integer getParentId() {
+    public int getParentId() {
         return parentId;
     }
 
-    public void setParentId(Integer parentId) {
+    public void setParentId(int parentId) {
         this.parentId = parentId;
     }
 
-    public Boolean getSortOrder() {
+    public int getSortOrder() {
         return sortOrder;
     }
 
-    public void setSortOrder(Boolean sortOrder) {
+    public void setSortOrder(int sortOrder) {
         this.sortOrder = sortOrder;
     }
 
-    public Boolean getShowIndex() {
+    public int getShowIndex() {
         return showIndex;
     }
 
-    public void setShowIndex(Boolean showIndex) {
+    public void setShowIndex(int showIndex) {
         this.showIndex = showIndex;
     }
 
-    public Boolean getIsShow() {
+    public int getIsShow() {
         return isShow;
     }
 
-    public void setIsShow(Boolean isShow) {
+    public void setIsShow(int isShow) {
         this.isShow = isShow;
     }
 
@@ -135,11 +135,11 @@ public class Category {
         this.level = level == null ? null : level.trim();
     }
 
-    public Integer getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(int type) {
         this.type = type;
     }
 

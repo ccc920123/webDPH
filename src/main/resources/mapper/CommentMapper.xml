@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jysd.dphweb.dao.CommentDao">
+
+    <insert id="insertSelective" parameterType="com.jysd.dphweb.bean.tablebean.Comment">
+        insert into nideshop_comment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+
+            <if test="typeId != null">
+                type_id,
+            </if>
+            <if test="valueId != null">
+                value_id,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="addTime != null">
+                add_time,
+            </if>
+
+            <if test="userId != null">
+                user_id,
+            </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+
+            <if test="typeId != null">
+                #{typeId},
+            </if>
+            <if test="valueId != null">
+                #{valueId},
+            </if>
+            <if test="content != null">
+                #{content},
+            </if>
+            <if test="addTime != null">
+                #{addTime},
+            </if>
+
+            <if test="userId != null">
+                #{userId},
+            </if>
+
+        </trim>
+    </insert>
+    <select id="selectCount" resultType="java.lang.Integer">
+
+
+SELECT COUNT(*) id FROM nideshop_comment WHERE  type_id=#{typeid} AND value_id=#{valueid} ;
+
+
+    </select>
+    <select id="selectPicCount" resultType="java.lang.Integer">
+
+        SELECT COUNT(*) id FROM  nideshop_comment c RIGHT JOIN nideshop_comment_picture ncp ON (ncp.id=c.id) WHERE c.type_id=#{typeid} AND c.value_id=#{valueid};
+
+    </select>
+    <select id="selectPagecomment" resultType="com.jysd.dphweb.bean.tablebean.Comment">
+
+
+        SELECT * FROM nideshop_comment WHERE  id >=
+(SELECT id FROM nideshop_comment
+WHERE type_id = #{typeid}
+AND value_id=#{valueid}
+ORDER BY id LIMIT #{page}, 1) LIMIT #{size}
+
+
+
+    </select>
+    <select id="selectPicComment" resultType="com.jysd.dphweb.bean.tablebean.Comment">
+
+SELECT * FROM  nideshop_comment c RIGHT JOIN nideshop_comment_picture ncp ON (ncp.id=c.id)
+WHERE c.type_id=#{typeid} AND c.value_id=#{valueid}  LIMIT #{page},#{size};
+
+
+    </select>
+</mapper>

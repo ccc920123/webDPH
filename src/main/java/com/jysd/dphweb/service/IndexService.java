@@ -111,7 +111,7 @@ public class IndexService implements IndexServiceImp {
                 IndexNewCategoryList newCategoryListlist = new IndexNewCategoryList();
                 newCategoryListlist.setId(categoryItem.getId());
                 newCategoryListlist.setName(categoryItem.getName());
-                newCategoryListlist.setGoodsList(dao.selectGoodsList(categoryItem.getId()));
+                newCategoryListlist.setGoodsList(dao.selectGoodsList(categoryItem.getId()+""));
                 date.add(newCategoryListlist);
 
 
