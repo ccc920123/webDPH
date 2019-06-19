@@ -1,5 +1,8 @@
 package com.jysd.dphweb.bean.tablebean;
 
+/**
+ * 问题 说明
+ */
 public class GoodsIssue {
     private Integer id;
 
