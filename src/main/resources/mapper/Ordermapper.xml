@@ -3,10 +3,140 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--坑点2：命名空间指向对应dao类名-->
 <mapper namespace="com.jysd.dphweb.dao.OrderDao">
+    <insert id="addOrder" parameterType="com.jysd.dphweb.bean.tablebean.OrderInfo">
+        insert into nideshop_order
+
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+
+            <if test="order_sn != null">
+                order_sn,
+            </if>
+            <if test="user_id != null">
+                user_id,
+            </if>
+            <if test="consignee != null">
+                consignee,
+            </if>
+            <if test="mobile != null">
+                mobile,
+            </if>
+
+            <if test="province != null">
+                province,
+            </if>
+            <if test="city != null">
+                city,
+            </if>
+            <if test="district != null">
+                district,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="freight_price != null">
+                freight_price,
+            </if>
+            <if test="postscript != null">
+                postscript,
+            </if>
+            <if test="coupon_id != null">
+                coupon_id,
+            </if>
+            <if test="coupon_price != null">
+                coupon_price,
+            </if>
+            <if test="add_time != null">
+                add_time,
+            </if>
+            <if test="goods_price != null">
+                goods_price,
+            </if>
+            <if test="order_price != null">
+                order_price,
+            </if>
+            <if test="actual_price != null">
+                actual_price,
+            </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+
+            <if test="order_sn != null">
+                #{order_sn},
+            </if>
+            <if test="user_id != null">
+                #{user_id},
+            </if>
+            <if test="consignee != null">
+                #{consignee},
+            </if>
+            <if test="mobile != null">
+                #{mobile},
+            </if>
+
+            <if test="province != null">
+                #{province},
+            </if>
+            <if test="city != null">
+                #{city},
+            </if>
+            <if test="district != null">
+                #{district},
+            </if>
+            <if test="address != null">
+                #{address},
+            </if>
+            <if test="freight_price != null">
+                #{freight_price},
+            </if>
+            <if test="postscript != null">
+                #{postscript},
+            </if>
+            <if test="coupon_id != null">
+                #{coupon_id},
+            </if>
+            <if test="coupon_price != null">
+                #{coupon_price},
+            </if>
+            <if test="add_time != null">
+                #{add_time},
+            </if>
+            <if test="goods_price != null">
+                #{goods_price},
+            </if>
+            <if test="order_price != null">
+                #{order_price},
+            </if>
+            <if test="actual_price != null">
+                #{actual_price},
+            </if>
+        </trim>
+
+
+
+    </insert>
 
     <select id="seleListAction" resultType="com.jysd.dphweb.bean.tablebean.Order">
 
 SELECT * FROM  nideshop_order WHERE user_id=#{loginUser} LIMIT #{page},#{size};
+
+    </select>
+    <select id="selectorderinfo" resultType="com.jysd.dphweb.bean.tablebean.Order">
+        SELECT * FROM  nideshop_order WHERE  user_id=#{loginUser} AND  id=#{orderId};
+
+    </select>
+    <select id="selectorderGoods" resultType="com.jysd.dphweb.bean.tablebean.OrderGoods">
+        SELECT * FROM  nideshop_order_goods WHERE  order_id=#{orderId};
+
+    </select>
+    <select id="selectAddress" resultType="com.jysd.dphweb.bean.tablebean.Address">
+
+        SELECT * FROM nideshop_address WHERE id=#{id};
+
+    </select>
+    <select id="selectCart" resultType="com.jysd.dphweb.bean.tablebean.Cart">
+
+        SELECT *  FROM nideshop_cart WHERE user_id=#{loginUser} AND session_id=1 AND checked=1;
 
     </select>
 </mapper>

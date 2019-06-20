@@ -3,6 +3,19 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--坑点2：命名空间指向对应dao类名-->
 <mapper namespace="com.jysd.dphweb.dao.GoodsDao">
+    <insert id="addFootPrint">
+
+INSERT  INTO  nideshop_footprint(user_id, goods_id)
+  VALUE
+  ( #{loginid},#{valueid});
+
+    </insert>
+    <insert id="addKeyword">
+       INSERT  INTO  nideshop_search_history (keyword,  add_time, user_id)
+       VALUE (#{keyword},date_format(now(), '%Y%m%d%H'),#{userid});
+
+
+    </insert>
 
 
     <select id="selectGoods" resultType="com.jysd.dphweb.bean.tablebean.Goods">
@@ -27,5 +40,62 @@ ORDER BY g.attribute_id ASC ;
     </select>
     <select id="selectGoodsIssues" resultType="com.jysd.dphweb.bean.tablebean.GoodsIssue">
 SELECT * FROM nideshop_goods_issue;
+    </select>
+    <select id="selectBrand" resultType="com.jysd.dphweb.bean.tablebean.Brand">
+
+SELECT * FROM nideshop_brand  WHERE  id=#{infogoodid};
+    </select>
+    <select id="selectCountComment" resultType="com.jysd.dphweb.bean.tablebean.CountId">
+
+SELECT  COUNT(*)id  FROM nideshop_comment WHERE type_id=0 AND  value_id =#{valueid};
+    </select>
+    <select id="selectHotComment" resultType="com.jysd.dphweb.bean.tablebean.Comment">
+
+SELECT  * FROM nideshop_comment WHERE type_id=0 AND  value_id =#{valueid};
+    </select>
+    <select id="selectcommentUser" resultType="com.jysd.dphweb.bean.tablebean.User">
+SELECT  nickname,username,avatar FROM nideshop_user WHERE id=#{userid};
+
+    </select>
+    <select id="selectCommentPicture" resultType="com.jysd.dphweb.bean.tablebean.CommentPicture">
+
+SELECT * FROM nideshop_comment_picture WHERE comment_id=#{commentid};
+
+    </select>
+    <select id="selectIsHasCollect" resultType="com.jysd.dphweb.bean.tablebean.Collect">
+
+SELECT  * FROM nideshop_collect  WHERE user_id=#{loginid} AND is_attention=0 AND  value_id=#{valueid};
+    </select>
+    <select id="selectCategory" resultType="com.jysd.dphweb.bean.tablebean.Category">
+
+
+    SELECT  * FROM  nideshop_category WHERE id=#{id};
+
+    </select>
+    <select id="selectBrotherCategory" resultType="com.jysd.dphweb.bean.tablebean.Category">
+
+SELECT  * FROM  nideshop_category WHERE parent_id=#{parentid};
+    </select>
+    <select id="listAction" resultType="com.jysd.dphweb.bean.tablebean.GoodsBean">
+SELECT id,name,list_pic_url,retail_price FROM nideshop_goods WHERE 1=1
+                                                                   AND is_new=0
+                                                                   AND is_hot=0
+                                                                   AND  brand_id=0
+
+ORDER BY retail_price DESC LIMIT  1,10;
+    </select>
+    <select id="relatedAction" resultType="com.jysd.dphweb.bean.tablebean.GoodsBean">
+
+        SELECT  id,name,list_pic_url,retail_price FROM nideshop_goods WHERE  id IN (
+SELECT related_goods_id FROM nideshop_related_goods WHERE goods_id=#{id})
+    </select>
+    <select id="relatedclassAction" resultType="com.jysd.dphweb.bean.tablebean.GoodsBean">
+
+SELECT  id,name,list_pic_url,retail_price FROM nideshop_goods WHERE  category_id IN (
+SELECT category_id FROM  nideshop_goods WHERE id=#{id}) LIMIT 8;
+
+    </select>
+    <select id="countAction" resultType="com.jysd.dphweb.bean.tablebean.CountId">
+SELECT count(*)id FROM nideshop_goods WHERE  is_delete=0 AND  is_on_sale =1;
     </select>
 </mapper>
