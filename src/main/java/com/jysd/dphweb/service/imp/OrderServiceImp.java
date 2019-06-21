@@ -12,4 +12,6 @@ public interface OrderServiceImp {
 
     Response submitAction(int addressid,int userid,int orderid,String postscript)throws  Exception;
 
+
+    Response expressAction(int orderId)throws Exception;
 }

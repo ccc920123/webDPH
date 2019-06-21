@@ -1,9 +1,8 @@
 package com.jysd.dphweb.bean.tablebean;
 
-import java.math.BigDecimal;
 
 public class Topic {
-    private Integer id;
+    private int id;
 
     private String title;
 
@@ -13,29 +12,29 @@ public class Topic {
 
     private String subtitle;
 
-    private Integer topicCategoryId;
+    private int topicCategoryId;
 
-    private BigDecimal priceInfo;
+    private double priceInfo;
 
     private String readCount;
 
     private String scenePicUrl;
 
-    private Integer topicTemplateId;
+    private int topicTemplateId;
 
-    private Integer topicTagId;
+    private int topicTagId;
 
-    private Integer sortOrder;
+    private int sortOrder;
 
     private Boolean isShow;
 
     private String content;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -71,19 +70,19 @@ public class Topic {
         this.subtitle = subtitle == null ? null : subtitle.trim();
     }
 
-    public Integer getTopicCategoryId() {
+    public int getTopicCategoryId() {
         return topicCategoryId;
     }
 
-    public void setTopicCategoryId(Integer topicCategoryId) {
+    public void setTopicCategoryId(int topicCategoryId) {
         this.topicCategoryId = topicCategoryId;
     }
 
-    public BigDecimal getPriceInfo() {
+    public double getPriceInfo() {
         return priceInfo;
     }
 
-    public void setPriceInfo(BigDecimal priceInfo) {
+    public void setPriceInfo(double priceInfo) {
         this.priceInfo = priceInfo;
     }
 
@@ -103,27 +102,27 @@ public class Topic {
         this.scenePicUrl = scenePicUrl == null ? null : scenePicUrl.trim();
     }
 
-    public Integer getTopicTemplateId() {
+    public int getTopicTemplateId() {
         return topicTemplateId;
     }
 
-    public void setTopicTemplateId(Integer topicTemplateId) {
+    public void setTopicTemplateId(int topicTemplateId) {
         this.topicTemplateId = topicTemplateId;
     }
 
-    public Integer getTopicTagId() {
+    public int getTopicTagId() {
         return topicTagId;
     }
 
-    public void setTopicTagId(Integer topicTagId) {
+    public void setTopicTagId(int topicTagId) {
         this.topicTagId = topicTagId;
     }
 
-    public Integer getSortOrder() {
+    public int getSortOrder() {
         return sortOrder;
     }
 
-    public void setSortOrder(Integer sortOrder) {
+    public void setSortOrder(int sortOrder) {
         this.sortOrder = sortOrder;
     }
 

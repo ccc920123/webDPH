@@ -5,6 +5,7 @@ import com.jysd.dphweb.bean.Response;
 import com.jysd.dphweb.bean.tablebean.*;
 import com.jysd.dphweb.dao.OrderDao;
 import com.jysd.dphweb.service.imp.OrderServiceImp;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 @Service
 public class OrderService implements OrderServiceImp {
 
+    @Autowired
     OrderDao dao;
 
     @Override
@@ -77,6 +79,15 @@ public class OrderService implements OrderServiceImp {
 
         //TODO  统计商品总价
 
+//        for(Cart goodsItem: checkedGoodsList)
+//        {
+//            OrderGoods orderGoods=new OrderGoods();
+//            orderGoods.setOrderId(goodsItem);
+//
+//
+//
+//        }
+
 
         OrderInfo orderInfo = new OrderInfo();
         orderInfo.setOrder_sn(order.getOrderSn());
@@ -104,5 +115,14 @@ public class OrderService implements OrderServiceImp {
         }
 
 //        return null;
+    }
+
+    @Override
+    public Response expressAction(int orderId) throws Exception {
+
+        OrderExpress orderExpress;
+        orderExpress = dao.selectExpress(orderId);
+
+        return orderExpress != null ? new Response().success(orderExpress) : new Response().failure("订单不存在");
     }
 }

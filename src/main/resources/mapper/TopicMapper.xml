@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jysd.dphweb.dao.TopicDao">
+
+    <select id="selectTopic" resultType="com.jysd.dphweb.bean.tablebean.Topic">
+SELECT id,title, price_info, scene_pic_url, subtitle
+FROM  nideshop_topic LIMIT #{page} ,#{size};
+
+
+
+  </select>
+    <select id="selectdetail" resultType="com.jysd.dphweb.bean.tablebean.Topic">
+        SELECT * FROM nideshop_topic WHERE  id=#{id};
+
+    </select>
+    <select id="selectrelated" resultType="com.jysd.dphweb.bean.tablebean.Topic">
+
+        SELECT id,title, price_info, scene_pic_url, subtitle FROM nideshop_topic LIMIT 4;
+    </select>
+</mapper>

@@ -23,6 +23,10 @@ List<Cart> selectCart(@Param("loginUser") int loginuser) throws  Exception;
 
 int addOrder(OrderInfo orderInfo)throws Exception;
 
+OrderExpress selectExpress(@Param("orderId")int orderId) throws Exception;
+
+
+
 //String selectorderInfoprovincename(@Param("orderInfoprovince")int orderid )throws Exception;
 //String orderInfocityname(@Param("orderInfocity")int orderid )throws Exception;
 //String selectorderInfodistrictname(@Param("orderInfodistrict")int orderid )throws Exception;

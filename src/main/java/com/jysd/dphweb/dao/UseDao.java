@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface UseDao {
 
 
-
     /**
      * 注册数据
      *

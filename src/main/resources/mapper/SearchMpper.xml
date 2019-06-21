@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jysd.dphweb.dao.SearchDao">
+    <delete id="clearhistory">
+
+        DELETE FROM  nideshop_search_history WHERE  user_id=#{userid};
+
+    </delete>
+
+    <select id="selectdefaultKeyword" resultType="com.jysd.dphweb.bean.tablebean.KeyWords">
+  SELECT  * FROM  nideshop_keywords WHERE is_default=1 LIMIT 1;
+    </select>
+    <select id="selecthotKeywordList" resultType="com.jysd.dphweb.bean.tablebean.KeyWords">
+
+SELECT DISTINCT keyword,is_hot FROM  nideshop_keywords  LIMIT 10;
+
+    </select>
+    <select id="selecthistoryKeywordList" resultType="com.jysd.dphweb.bean.tablebean.SearchHistory">
+
+SELECT DISTINCT  keyword FROM  nideshop_search_history WHERE user_id=#{userid} LIMIT 10;
+    </select>
+    <select id="selectKeyWordsHelper" resultType="com.jysd.dphweb.bean.tablebean.KeyWords">
+
+SELECT DISTINCT keyword FROM nideshop_keywords WHERE keyword LIKE '%${keyword}%' LIMIT 10;
+
+    </select>
+</mapper>

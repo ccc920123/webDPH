@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--坑点2：命名空间指向对应dao类名-->
+<mapper namespace="com.jysd.dphweb.dao.PayDao">
+
+    <select id="selectOrder" resultType="com.jysd.dphweb.bean.tablebean.Order">
+
+      SELECT * FROM  nideshop_order WHERE id=#{id};
+
+    </select>
+    <select id="selectUser" resultType="com.jysd.dphweb.bean.tablebean.User">
+
+        SELECT * FROM nideshop_user WHERE id=#{id};
+
+    </select>
+
+</mapper>

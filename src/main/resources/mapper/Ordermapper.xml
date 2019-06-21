@@ -139,4 +139,8 @@ SELECT * FROM  nideshop_order WHERE user_id=#{loginUser} LIMIT #{page},#{size};
         SELECT *  FROM nideshop_cart WHERE user_id=#{loginUser} AND session_id=1 AND checked=1;
 
     </select>
+    <select id="selectExpress" resultType="com.jysd.dphweb.bean.tablebean.OrderExpress">
+SELECT *  FROM nideshop_order_express WHERE  order_id=#{orderId};
+
+    </select>
 </mapper>

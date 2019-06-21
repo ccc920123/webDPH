@@ -37,7 +37,7 @@ public class Order {
 
     private Byte payId;
 
-    private BigDecimal actualPrice;
+    private double actualPrice;
 
     private Integer integral;
 
@@ -199,11 +199,11 @@ public class Order {
         this.payId = payId;
     }
 
-    public BigDecimal getActualPrice() {
+    public double getActualPrice() {
         return actualPrice;
     }
 
-    public void setActualPrice(BigDecimal actualPrice) {
+    public void setActualPrice(double actualPrice) {
         this.actualPrice = actualPrice;
     }
 
