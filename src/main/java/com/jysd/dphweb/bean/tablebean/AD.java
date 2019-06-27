@@ -1,49 +1,46 @@
 package com.jysd.dphweb.bean.tablebean;
 
-/**
- * 作者:陈渝金
- * 公司：四川星盾科技股份有限公司
- * 部门：技术部 PDA
- * 创建时间: 2019/3/27 22:55
- * 描述：
- * 修改人：
- * 修改时间：
- */
 public class AD {
+    private Short id;
 
+    private Short adPositionId;
 
-    private int id;
-    private int ad_position_id;
-    private int media_type;
+    private Byte mediaType;
+
     private String name;
-    private String link;
-    private String image_url;
-    private String content;
-    private int end_time;
-    private int enabled;
 
-    public int getId() {
+    private String link;
+
+    private String content;
+
+    private Integer endTime;
+
+    private Byte enabled;
+
+    private String imageUrl;
+
+    public Short getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Short id) {
         this.id = id;
     }
 
-    public int getAd_position_id() {
-        return ad_position_id;
+    public Short getAdPositionId() {
+        return adPositionId;
     }
 
-    public void setAd_position_id(int ad_position_id) {
-        this.ad_position_id = ad_position_id;
+    public void setAdPositionId(Short adPositionId) {
+        this.adPositionId = adPositionId;
     }
 
-    public int getMedia_type() {
-        return media_type;
+    public Byte getMediaType() {
+        return mediaType;
     }
 
-    public void setMedia_type(int media_type) {
-        this.media_type = media_type;
+    public void setMediaType(Byte mediaType) {
+        this.mediaType = mediaType;
     }
 
     public String getName() {
@@ -51,7 +48,7 @@ public class AD {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 
     public String getLink() {
@@ -59,15 +56,7 @@ public class AD {
     }
 
     public void setLink(String link) {
-        this.link = link;
-    }
-
-    public String getImage_url() {
-        return image_url;
-    }
-
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
+        this.link = link == null ? null : link.trim();
     }
 
     public String getContent() {
@@ -75,37 +64,30 @@ public class AD {
     }
 
     public void setContent(String content) {
-        this.content = content;
+        this.content = content == null ? null : content.trim();
     }
 
-    public int getEnd_time() {
-        return end_time;
+    public Integer getEndTime() {
+        return endTime;
     }
 
-    public void setEnd_time(int end_time) {
-        this.end_time = end_time;
+    public void setEndTime(Integer endTime) {
+        this.endTime = endTime;
     }
 
-    public int getEnabled() {
+    public Byte getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(int enabled) {
+    public void setEnabled(Byte enabled) {
         this.enabled = enabled;
     }
 
-    @Override
-    public String toString() {
-        return "AD{" +
-                "id=" + id +
-                ", ad_position_id=" + ad_position_id +
-                ", media_type=" + media_type +
-                ", name='" + name + '\'' +
-                ", link='" + link + '\'' +
-                ", image_url='" + image_url + '\'' +
-                ", content='" + content + '\'' +
-                ", end_time=" + end_time +
-                ", enabled=" + enabled +
-                '}';
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl == null ? null : imageUrl.trim();
     }
 }

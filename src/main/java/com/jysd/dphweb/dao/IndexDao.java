@@ -2,6 +2,7 @@ package com.jysd.dphweb.dao;
 
 import com.jysd.dphweb.bean.tablebean.*;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -34,7 +35,10 @@ public interface IndexDao {
 
     List<GoodsListBean>selectGoodsList(@Param("id") String id)throws Exception;
 
-    ///
+    ///  api
+
+    int updataBanner(@Param("id") int id)throws  Exception;
+    int insertBanner(AD banner)throws  Exception;
 
 
 

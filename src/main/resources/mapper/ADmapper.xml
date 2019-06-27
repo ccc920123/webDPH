@@ -3,6 +3,100 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--坑点2：命名空间指向对应dao类名-->
 <mapper namespace="com.jysd.dphweb.dao.IndexDao">
+    <insert id="insertBanner" parameterType="com.jysd.dphweb.bean.tablebean.AD">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="adPositionId != null">
+                ad_position_id,
+            </if>
+            <if test="mediaType != null">
+                media_type,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="link != null">
+                link,
+            </if>
+            <if test="imageUrl != null">
+                image_url,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="endTime != null">
+                end_time,
+            </if>
+            <if test="enabled != null">
+                enabled,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="adPositionId != null">
+                #{adPositionId},
+            </if>
+            <if test="mediaType != null">
+                #{mediaType},
+            </if>
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="link != null">
+                #{link},
+            </if>
+            <if test="imageUrl != null">
+                #{imageUrl},
+            </if>
+            <if test="content != null">
+                #{content},
+            </if>
+            <if test="endTime != null">
+                #{endTime},
+            </if>
+            <if test="enabled != null">
+                #{enabled},
+            </if>
+
+        </trim>
+
+    </insert>
+    <update id="updataBanner" parameterType="com.jysd.dphweb.bean.tablebean.AD">
+        UPDATE nideshop_ad
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="adPositionId != null">
+                ad_position_id = #{adPositionId},
+            </if>
+            <if test="mediaType != null">
+                media_type = #{mediaType},
+            </if>
+            <if test="link != null">
+                link = #{link},
+            </if>
+            <if test="imageUrl != null">
+                image_url = #{imageUrl},
+            </if>
+            <if test="content != null">
+                content = #{content},
+            </if>
+            <if test="endTime != null">
+                end_time = #{fendTime},
+            </if>
+            <if test="enabled != null">
+                enabled = #{enabled},
+            </if>
+
+        </set>
+        where id = #{id}
+    </update>
+
     <select id="selectAd" parameterType="string" resultType="com.jysd.dphweb.bean.tablebean.AD">
         select * from nideshop_ad where ad_position_id=#{id};
     </select>

@@ -1,11 +1,10 @@
 package com.jysd.dphweb.controller;
 
 import com.jysd.dphweb.bean.Response;
+import com.jysd.dphweb.bean.tablebean.AD;
 import com.jysd.dphweb.service.IndexService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 作者:陈渝金
@@ -107,6 +106,25 @@ public class IndexCtrl {
         }
 
 
+    }
+
+    @RequestMapping("/updataBanner")
+    public Response updataBanner(@RequestParam int id) {
+
+        try {
+            return service.updataBanner(id);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @RequestMapping("/insetbanner")
+    public Response insertBanner(@RequestBody AD banner) {
+        try {
+            return service.insertBanner(banner);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 

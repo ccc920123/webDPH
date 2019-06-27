@@ -94,15 +94,21 @@ public class IndexService implements IndexServiceImp {
     @Override
     public Response getIndextDate() throws Exception {
         //类别
+       List<AD> banners= dao.selectAd("1");
         IndexDataBean indexDataList = null;
         indexDataList = new IndexDataBean();
 
-        indexDataList.setBanner(dao.selectAd("1"));
-        indexDataList.setChannel(dao.selectChannel());
-        indexDataList.setNewGoodsList(dao.selectNewGoods("1"));
-        indexDataList.setHotGoods(dao.selectHotGoods("1"));
-        indexDataList.setBrandList(dao.selectBrand());
-        indexDataList.setTopicList(dao.selectTopic());
+        indexDataList.setBanner(banners);
+       List<Channel> channelList= dao.selectChannel();
+        indexDataList.setChannel(channelList);
+       List<Goods> newgoodsList= dao.selectNewGoods("1");
+        indexDataList.setNewGoodsList(newgoodsList);
+        List<Goods> hotgoodsList=dao.selectHotGoods("1");
+        indexDataList.setHotGoods(hotgoodsList);
+        List<Brand> brandList=dao.selectBrand();
+        indexDataList.setBrandList(brandList);
+        List<Topic> topicList =dao.selectTopic();
+        indexDataList.setTopicList(topicList);
         List<Category> categoryList = null;
         categoryList = dao.selectCategory();
         if (categoryList.size() != 0) {
@@ -129,5 +135,20 @@ public class IndexService implements IndexServiceImp {
         }
 
 
+    }
+
+    @Override
+    public Response updataBanner(int id) throws Exception {
+
+        int row=dao.updataBanner(id);
+
+
+        return row>0?new Response().success():new Response().failure();
+    }
+
+    @Override
+    public Response insertBanner(AD banner) throws Exception {
+        int row=dao.insertBanner(banner);
+        return row>0 ? new Response().success():new Response().failure();
     }
 }

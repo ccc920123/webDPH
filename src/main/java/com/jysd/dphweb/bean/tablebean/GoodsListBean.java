@@ -6,8 +6,8 @@ public class GoodsListBean {
 
     private String id;
     private String name;
-    private String list_pic_url;
-    private String retail_price;
+    private String listPicUrl;
+    private String retailPrice;
 
     public String getId() {
         return id;
@@ -25,19 +25,19 @@ public class GoodsListBean {
         this.name = name;
     }
 
-    public String getList_pic_url() {
-        return list_pic_url;
+    public String getListPicUrl() {
+        return listPicUrl;
     }
 
-    public void setList_pic_url(String list_pic_url) {
-        this.list_pic_url = list_pic_url;
+    public void setListPicUrl(String listPicUrl) {
+        this.listPicUrl = listPicUrl;
     }
 
-    public String getRetail_price() {
-        return retail_price;
+    public String getRetailPrice() {
+        return retailPrice;
     }
 
-    public void setRetail_price(String retail_price) {
-        this.retail_price = retail_price;
+    public void setRetailPrice(String retailPrice) {
+        this.retailPrice = retailPrice;
     }
 }

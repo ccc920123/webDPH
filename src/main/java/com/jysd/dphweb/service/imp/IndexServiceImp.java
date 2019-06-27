@@ -1,7 +1,9 @@
 package com.jysd.dphweb.service.imp;
 
 import com.jysd.dphweb.bean.Response;
+import com.jysd.dphweb.bean.tablebean.AD;
 import com.sun.org.apache.regexp.internal.RE;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 作者:陈渝金
@@ -32,4 +34,8 @@ public interface IndexServiceImp {
     Response getCategory() throws  Exception;
 
     Response getIndextDate() throws  Exception;
+
+
+    Response updataBanner(int id)throws  Exception;
+    Response insertBanner(AD banner)throws  Exception;
 }

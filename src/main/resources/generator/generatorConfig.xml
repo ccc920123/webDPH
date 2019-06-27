@@ -24,14 +24,14 @@
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!--&lt;!&ndash;&lt;!&ndash; 生成映射文件的包名和位置&ndash;&gt;&ndash;&gt;-->
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
-            <property name="enableSubPackages" value="true"/>
-        </sqlMapGenerator>
+        <!--<sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+        <!--</sqlMapGenerator>-->
         <!--&lt;!&ndash; 生成DAO的包名和位置&ndash;&gt;-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.jysd.dphweb.dao" targetProject="src/main/java">
-            <property name="enableSubPackages" value="true"/>
-        </javaClientGenerator>
+        <!--<javaClientGenerator type="XMLMAPPER" targetPackage="com.jysd.dphweb.dao" targetProject="src/main/java">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+        <!--</javaClientGenerator>-->
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
-        <table tableName="nideshop_topic" domainObjectName="Topic" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="nideshop_ad" domainObjectName="AD" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
     </context>
 </generatorConfiguration>

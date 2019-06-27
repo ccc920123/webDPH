@@ -12,9 +12,9 @@ public class Goods {
 
     private int id;
     private String name;
-    private String list_pic_url;
-    private String retail_price;
-    private String goods_brief;
+    private String listPicUrl;
+    private String retailPrice;
+    private String goodsBrief;
 
     public int getId() {
         return id;
@@ -32,27 +32,27 @@ public class Goods {
         this.name = name;
     }
 
-    public String getList_pic_url() {
-        return list_pic_url;
+    public String getListPicUrl() {
+        return listPicUrl;
     }
 
-    public void setList_pic_url(String list_pic_url) {
-        this.list_pic_url = list_pic_url;
+    public void setListPicUrl(String listPicUrl) {
+        this.listPicUrl = listPicUrl;
     }
 
-    public String getRetail_price() {
-        return retail_price;
+    public String getRetailPrice() {
+        return retailPrice;
     }
 
-    public void setRetail_price(String retail_price) {
-        this.retail_price = retail_price;
+    public void setRetailPrice(String retailPrice) {
+        this.retailPrice = retailPrice;
     }
 
-    public String getGoods_brief() {
-        return goods_brief;
+    public String getGoodsBrief() {
+        return goodsBrief;
     }
 
-    public void setGoods_brief(String goods_brief) {
-        this.goods_brief = goods_brief;
+    public void setGoodsBrief(String goodsBrief) {
+        this.goodsBrief = goodsBrief;
     }
 }

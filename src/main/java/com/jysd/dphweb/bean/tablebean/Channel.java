@@ -15,9 +15,9 @@ public class Channel {
     //跳转的url 也就是小程序的page
     private String url;
     //icon、图片的 url
-    private String icon_url;
+    private String iconUrl;
 
-    private String sort_order;
+    private String sortOrder;
 
     public String getName() {
         return name;
@@ -35,19 +35,19 @@ public class Channel {
         this.url = url;
     }
 
-    public String getIcon_url() {
-        return icon_url;
+    public String getIconUrl() {
+        return iconUrl;
     }
 
-    public void setIcon_url(String icon_url) {
-        this.icon_url = icon_url;
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
     }
 
-    public String getSort_order() {
-        return sort_order;
+    public String getSortOrder() {
+        return sortOrder;
     }
 
-    public void setSort_order(String sort_order) {
-        this.sort_order = sort_order;
+    public void setSortOrder(String sortOrder) {
+        this.sortOrder = sortOrder;
     }
 }
