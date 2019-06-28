@@ -29,13 +29,17 @@ public interface IndexServiceImp {
 
     //
     Response getBrand() throws Exception;
+
     Response getTopic() throws Exception;
 
-    Response getCategory() throws  Exception;
+    Response getCategory() throws Exception;
 
-    Response getIndextDate() throws  Exception;
+    Response getIndextDate() throws Exception;
 
 
-    Response updataBanner(int id)throws  Exception;
-    Response insertBanner(AD banner)throws  Exception;
+    Response updataBanner(AD banner) throws Exception;
+
+    Response insertBanner(AD banner) throws Exception;
+
+    Response delectBanner(int id) throws Exception;
 }

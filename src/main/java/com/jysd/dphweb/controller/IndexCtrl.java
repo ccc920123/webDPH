@@ -109,10 +109,10 @@ public class IndexCtrl {
     }
 
     @RequestMapping("/updataBanner")
-    public Response updataBanner(@RequestParam int id) {
+    public Response updataBanner(@RequestBody AD banner) {
 
         try {
-            return service.updataBanner(id);
+            return service.updataBanner(banner);
         } catch (Exception e) {
             return null;
         }
@@ -122,6 +122,16 @@ public class IndexCtrl {
     public Response insertBanner(@RequestBody AD banner) {
         try {
             return service.insertBanner(banner);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @RequestMapping("/delectbanner")
+    public Response delctBanner(@RequestParam int id) {
+
+        try {
+            return service.delectBanner(id);
         } catch (Exception e) {
             return null;
         }

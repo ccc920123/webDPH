@@ -138,9 +138,9 @@ public class IndexService implements IndexServiceImp {
     }
 
     @Override
-    public Response updataBanner(int id) throws Exception {
+    public Response updataBanner(AD banner) throws Exception {
 
-        int row=dao.updataBanner(id);
+        int row=dao.updataBanner( banner);
 
 
         return row>0?new Response().success():new Response().failure();
@@ -150,5 +150,12 @@ public class IndexService implements IndexServiceImp {
     public Response insertBanner(AD banner) throws Exception {
         int row=dao.insertBanner(banner);
         return row>0 ? new Response().success():new Response().failure();
+    }
+
+    @Override
+    public Response delectBanner(int id) throws Exception {
+
+       int row= dao.delectBanner(id);
+        return row>0?new Response().success():new Response().failure();
     }
 }

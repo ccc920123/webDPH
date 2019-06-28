@@ -1,11 +1,11 @@
 package com.jysd.dphweb.bean.tablebean;
 
 public class AD {
-    private Short id;
+    private int id;
 
-    private Short adPositionId;
+    private int adPositionId;
 
-    private Byte mediaType;
+    private int mediaType;
 
     private String name;
 
@@ -13,33 +13,33 @@ public class AD {
 
     private String content;
 
-    private Integer endTime;
+    private int endTime;
 
-    private Byte enabled;
+    private int enabled;
 
     private String imageUrl;
 
-    public Short getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Short id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Short getAdPositionId() {
+    public int getAdPositionId() {
         return adPositionId;
     }
 
-    public void setAdPositionId(Short adPositionId) {
+    public void setAdPositionId(int adPositionId) {
         this.adPositionId = adPositionId;
     }
 
-    public Byte getMediaType() {
+    public int getMediaType() {
         return mediaType;
     }
 
-    public void setMediaType(Byte mediaType) {
+    public void setMediaType(int mediaType) {
         this.mediaType = mediaType;
     }
 
@@ -67,7 +67,7 @@ public class AD {
         this.content = content == null ? null : content.trim();
     }
 
-    public Integer getEndTime() {
+    public int getEndTime() {
         return endTime;
     }
 
@@ -75,11 +75,11 @@ public class AD {
         this.endTime = endTime;
     }
 
-    public Byte getEnabled() {
+    public int getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(Byte enabled) {
+    public void setEnabled(int enabled) {
         this.enabled = enabled;
     }
 

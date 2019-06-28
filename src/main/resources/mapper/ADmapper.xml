@@ -4,10 +4,8 @@
 <!--坑点2：命名空间指向对应dao类名-->
 <mapper namespace="com.jysd.dphweb.dao.IndexDao">
     <insert id="insertBanner" parameterType="com.jysd.dphweb.bean.tablebean.AD">
+        INSERT INTO nideshop_ad
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                id,
-            </if>
             <if test="adPositionId != null">
                 ad_position_id,
             </if>
@@ -34,9 +32,6 @@
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                #{id},
-            </if>
             <if test="adPositionId != null">
                 #{adPositionId},
             </if>
@@ -87,7 +82,7 @@
                 content = #{content},
             </if>
             <if test="endTime != null">
-                end_time = #{fendTime},
+                end_time = #{endTime},
             </if>
             <if test="enabled != null">
                 enabled = #{enabled},
@@ -96,6 +91,11 @@
         </set>
         where id = #{id}
     </update>
+    <delete id="delectBanner">
+
+        DELETE  FROM  nideshop_ad WHERE id=#{id};
+
+    </delete>
 
     <select id="selectAd" parameterType="string" resultType="com.jysd.dphweb.bean.tablebean.AD">
         select * from nideshop_ad where ad_position_id=#{id};

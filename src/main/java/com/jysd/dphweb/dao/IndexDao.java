@@ -37,8 +37,10 @@ public interface IndexDao {
 
     ///  api
 
-    int updataBanner(@Param("id") int id)throws  Exception;
+    int updataBanner(AD banner)throws  Exception;
     int insertBanner(AD banner)throws  Exception;
+
+    int delectBanner(@Param("id") int id)throws  Exception;
 
 
 
