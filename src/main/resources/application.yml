@@ -11,7 +11,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://47.94.130.23:3306/nideshop?useSSL=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&URIEncoding="UTF-8"
+    url: jdbc:mysql://47.94.130.23:3306/nideshop?autoReconnect=true&useSSL=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&URIEncoding="UTF-8"
     username: root
     password: Oo0chenyujinOo0
     driver-class-name:  com.mysql.cj.jdbc.Driver

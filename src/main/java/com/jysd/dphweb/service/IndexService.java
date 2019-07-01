@@ -94,20 +94,20 @@ public class IndexService implements IndexServiceImp {
     @Override
     public Response getIndextDate() throws Exception {
         //类别
-       List<AD> banners= dao.selectAd("1");
+        List<AD> banners = dao.selectAd("1");
         IndexDataBean indexDataList = null;
         indexDataList = new IndexDataBean();
 
         indexDataList.setBanner(banners);
-       List<Channel> channelList= dao.selectChannel();
+        List<Channel> channelList = dao.selectChannel();
         indexDataList.setChannel(channelList);
-       List<Goods> newgoodsList= dao.selectNewGoods("1");
+        List<Goods> newgoodsList = dao.selectNewGoods("1");
         indexDataList.setNewGoodsList(newgoodsList);
-        List<Goods> hotgoodsList=dao.selectHotGoods("1");
+        List<Goods> hotgoodsList = dao.selectHotGoods("1");
         indexDataList.setHotGoods(hotgoodsList);
-        List<Brand> brandList=dao.selectBrand();
+        List<Brand> brandList = dao.selectBrand();
         indexDataList.setBrandList(brandList);
-        List<Topic> topicList =dao.selectTopic();
+        List<Topic> topicList = dao.selectTopic();
         indexDataList.setTopicList(topicList);
         List<Category> categoryList = null;
         categoryList = dao.selectCategory();
@@ -117,12 +117,11 @@ public class IndexService implements IndexServiceImp {
                 IndexNewCategoryList newCategoryListlist = new IndexNewCategoryList();
                 newCategoryListlist.setId(categoryItem.getId());
                 newCategoryListlist.setName(categoryItem.getName());
-                newCategoryListlist.setGoodsList(dao.selectGoodsList(categoryItem.getId()+""));
+                newCategoryListlist.setGoodsList(dao.selectGoodsList(categoryItem.getId() + ""));
                 date.add(newCategoryListlist);
 
 
             }
-
 
 
             indexDataList.setCategoryList(date);
@@ -140,22 +139,45 @@ public class IndexService implements IndexServiceImp {
     @Override
     public Response updataBanner(AD banner) throws Exception {
 
-        int row=dao.updataBanner( banner);
+        int row = dao.updataBanner(banner);
 
 
-        return row>0?new Response().success():new Response().failure();
+        return row > 0 ? new Response().success() : new Response().failure();
     }
 
     @Override
     public Response insertBanner(AD banner) throws Exception {
-        int row=dao.insertBanner(banner);
-        return row>0 ? new Response().success():new Response().failure();
+        int row = dao.insertBanner(banner);
+        return row > 0 ? new Response().success() : new Response().failure();
     }
 
     @Override
     public Response delectBanner(int id) throws Exception {
 
-       int row= dao.delectBanner(id);
-        return row>0?new Response().success():new Response().failure();
+        int row = dao.delectBanner(id);
+        return row > 0 ? new Response().success() : new Response().failure();
+    }
+
+    @Override
+    public Response updataChannel(Channel channel) throws Exception {
+
+        int row = dao.updataChannel(channel);
+
+        return row > 0 ? new Response().success() : new Response().failure();
+    }
+
+    @Override
+    public Response insertChannel(Channel channel) throws Exception {
+
+        int row = dao.insertChannel(channel);
+
+        return row > 0 ? new Response().success() : new Response().failure();
+    }
+
+    @Override
+    public Response delectChannel(int id) throws Exception {
+
+        int row = dao.delectChannel(id);
+        return row > 0 ? new Response().success() : new Response().failure();
     }
 }

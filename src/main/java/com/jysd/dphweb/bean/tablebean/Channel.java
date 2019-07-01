@@ -11,6 +11,7 @@ package com.jysd.dphweb.bean.tablebean;
 public class Channel {
 
     //
+    private int id;
     private String name;
     //跳转的url 也就是小程序的page
     private String url;
@@ -18,6 +19,14 @@ public class Channel {
     private String iconUrl;
 
     private String sortOrder;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

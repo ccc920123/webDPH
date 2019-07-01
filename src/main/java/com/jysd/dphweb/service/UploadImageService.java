@@ -33,7 +33,45 @@ public class UploadImageService implements UploadImageServiceImp {
             Map<String, MultipartFile> file_list = rq.getFileMap();
 
             if (file_list != null && file_list.size() > 0) {
-                if (file_list.containsKey("inputName")) {
+                if (file_list.containsKey("BANNER")) {
+                    MultipartFile file = file_list.get("BANNER");
+                    if (file != null) {
+                        // 保存订单签收图片
+                        String fileName = file.getOriginalFilename();
+                        if (fileName!=null&&!fileName.equals(""))
+                        {
+                            ServletContext servletContext = request.getSession().getServletContext();
+                            String uploadPath = servletContext.getRealPath("/") + "upload\\"+"banner\\";
+                            File file1=new File(uploadPath);
+                            if (!file1.exists())
+                            {
+                                file1.mkdirs();
+                            }
+                            File saveFile = new File(uploadPath, fileName);
+                            file.transferTo(saveFile);
+                        }
+                        session.setAttribute("newfilename", fileName);
+                    }
+                }else if (file_list.containsKey("CHANNEL")) {
+                    MultipartFile file = file_list.get("CHANNEL");
+                    if (file != null) {
+                        // 保存订单签收图片
+                        String fileName = file.getOriginalFilename();
+                        if (fileName!=null&&!fileName.equals(""))
+                        {
+                            ServletContext servletContext = request.getSession().getServletContext();
+                            String uploadPath = servletContext.getRealPath("/") + "upload\\"+"channel\\";
+                            File file1=new File(uploadPath);
+                            if (!file1.exists())
+                            {
+                                file1.mkdirs();
+                            }
+                            File saveFile = new File(uploadPath, fileName);
+                            file.transferTo(saveFile);
+                        }
+                        session.setAttribute("newfilename", fileName);
+                    }
+                }else if (file_list.containsKey("inputName")) {
                     MultipartFile file = file_list.get("inputName");
                     if (file != null) {
                         // 保存订单签收图片

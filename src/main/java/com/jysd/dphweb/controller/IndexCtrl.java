@@ -2,7 +2,9 @@ package com.jysd.dphweb.controller;
 
 import com.jysd.dphweb.bean.Response;
 import com.jysd.dphweb.bean.tablebean.AD;
+import com.jysd.dphweb.bean.tablebean.Channel;
 import com.jysd.dphweb.service.IndexService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -132,6 +134,33 @@ public class IndexCtrl {
 
         try {
             return service.delectBanner(id);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @RequestMapping("/updatachannel")
+    public Response updataChannel(@RequestBody Channel channel) {
+        try {
+            return service.updataChannel(channel);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @RequestMapping("/insertchannel")
+    public Response insertChannel(@RequestBody Channel channel) {
+        try {
+            return service.insertChannel(channel);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @RequestMapping("/delectchannel")
+    public Response delectChannel(@RequestParam int id) {
+        try {
+            return service.delectChannel(id);
         } catch (Exception e) {
             return null;
         }

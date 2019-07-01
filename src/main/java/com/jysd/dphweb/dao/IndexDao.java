@@ -41,6 +41,11 @@ public interface IndexDao {
     int insertBanner(AD banner)throws  Exception;
 
     int delectBanner(@Param("id") int id)throws  Exception;
+    //channel
+    int updataChannel(Channel channel)throws  Exception;
+    int insertChannel(Channel channel)throws  Exception;
+
+    int delectChannel(@Param("id") int id)throws  Exception;
 
 
 

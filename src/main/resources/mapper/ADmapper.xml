@@ -60,6 +60,42 @@
         </trim>
 
     </insert>
+    <insert id="insertChannel" parameterType="com.jysd.dphweb.bean.tablebean.Channel">
+        INSERT INTO nideshop_channel
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                name,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="iconUrl != null">
+                icon_url,
+            </if>
+            <if test="sortOrder != null">
+                sort_order,
+            </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="url != null">
+                #{url},
+            </if>
+            <if test="iconUrl != null">
+                #{iconUrl},
+            </if>
+            <if test="sortOrder != null">
+                #{sortOrder},
+            </if>
+
+
+        </trim>
+
+    </insert>
     <update id="updataBanner" parameterType="com.jysd.dphweb.bean.tablebean.AD">
         UPDATE nideshop_ad
         <set>
@@ -91,10 +127,32 @@
         </set>
         where id = #{id}
     </update>
+    <update id="updataChannel" parameterType="com.jysd.dphweb.bean.tablebean.Channel">
+        UPDATE nideshop_channel
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="url != null">
+                url = #{url},
+            </if>
+            <if test="iconUrl != null">
+                icon_url = #{iconUrl},
+            </if>
+            <if test="sortOrder != null">
+                sort_order = #{sortOrder},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
     <delete id="delectBanner">
 
         DELETE  FROM  nideshop_ad WHERE id=#{id};
 
+    </delete>
+    <delete id="delectChannel">
+
+          DELETE  FROM  nideshop_channel WHERE id=#{id};
     </delete>
 
     <select id="selectAd" parameterType="string" resultType="com.jysd.dphweb.bean.tablebean.AD">

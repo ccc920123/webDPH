@@ -2,6 +2,7 @@ package com.jysd.dphweb.service.imp;
 
 import com.jysd.dphweb.bean.Response;
 import com.jysd.dphweb.bean.tablebean.AD;
+import com.jysd.dphweb.bean.tablebean.Channel;
 import com.sun.org.apache.regexp.internal.RE;
 import org.apache.ibatis.annotations.Param;
 
@@ -42,4 +43,10 @@ public interface IndexServiceImp {
     Response insertBanner(AD banner) throws Exception;
 
     Response delectBanner(int id) throws Exception;
+
+
+    Response updataChannel(Channel channel)throws  Exception;
+    Response insertChannel(Channel channel)throws  Exception;
+
+    Response delectChannel( int id)throws  Exception;
 }
