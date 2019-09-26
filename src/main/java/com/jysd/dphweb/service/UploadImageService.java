@@ -79,7 +79,7 @@ public class UploadImageService implements UploadImageServiceImp {
                         if (fileName!=null&&!fileName.equals(""))
                         {
                             ServletContext servletContext = request.getSession().getServletContext();
-                            String uploadPath = servletContext.getRealPath("/") + "upload\\";
+                            String uploadPath = servletContext.getRealPath("/") + "upload\\"+"shopimage\\";
                             File file1=new File(uploadPath);
                             if (!file1.exists())
                             {
